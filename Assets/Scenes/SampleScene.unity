@@ -1926,7 +1926,7 @@ TilemapRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 1db85183eb7be8a40b647d288d599b54, type: 2}
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -8147,7 +8147,7 @@ GameObject:
   - component: {fileID: 1769932327}
   - component: {fileID: 1769932328}
   - component: {fileID: 1769932325}
-  - component: {fileID: 1769932326}
+  - component: {fileID: 1769932324}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -8209,6 +8209,21 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.38
+--- !u!114 &1769932324
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1769932320}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d28535e0011e5d0458de704a3f241bef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponIndex:
+  - {fileID: 11400000, guid: 2a46920d9fd926b469a8e9c3396aff53, type: 2}
+  playerArm: {fileID: 1461079984}
 --- !u!114 &1769932325
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8230,19 +8245,6 @@ MonoBehaviour:
   ctlrApireSensitivity: 0.325
   aspireSpeed: 0.25
   aspireSpinSpeed: 3.2
---- !u!114 &1769932326
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1769932320}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ef7fda1cd16938c4599534e99e659271, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  equippedWeapon1: {fileID: 0}
 --- !u!114 &1769932327
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -54,7 +54,7 @@ public class PlayerIncarnation : MonoBehaviour
         arm1Sprite = arm1Trans.Find("PA1 Sprite").GetComponent<SpriteRenderer>();
         arm1Anim = arm1Trans.Find("PA1 Sprite").GetComponent<Animator>();
 
-        UpdateIncarnationRefs();
+        //UpdateIncarnationRefs();
 
         incDir = Vector2.zero;
 
@@ -198,10 +198,6 @@ public class PlayerIncarnation : MonoBehaviour
 
         arm1Sprite.enabled = true;
         inc1Sprite.enabled = true;
-
-        inc1Trail = Instantiate(incarnation1.GetComponent<IncarnationInfo>().trail);
-        inc1Trail.transform.parent = inc1Trans;
-        inc1Trail.transform.localPosition = new Vector3(0, 0.12f, 0);
 
         inc1ActivePS.Play();
 

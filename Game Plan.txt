@@ -1,19 +1,13 @@
-Old Player Abilities:
-Use a circle thingy that floats a set distance away from the player in the direction of the
-`mouse/joystick
-Hold down button 1 to bring out circle thingy
-Press button 2 whilst pressing button 1 to move to opposite side of circle thingy position
-Passing circle thingy through enemies harm them
+New player abilities:
+Action 1 : Swing soul blade. Button press = swing soul blade from right side to the front from player, outwards. On button release = return soul blade will complete arc and return to your left side. Attacking in successsion will alternate the side the blade starts on, resulting in swinging the soul blade back and forth. Until you let go of the button, the soul blade will stay in front of you, allowing you to do spinning attacks by moving your character around in a circle. Soul blade positioning will be based on the player's forward, thus attack direction is controlled by your movement facing direction.
+Action 2 : Boomerang throw. On button press, throws your soul blade straight forward a considerable distance. After it reaches this peak distance, it will begin to return to you. Whilst it is thrown, you cannot perform action 1 attacks.
+Action 3 : Apire towards soul blade. On button press, whilst soul blade is thrown during action 2
+
+Old Player Abilities [OUT-DATED]:
 Could use circle thingy to trigger switches/buttons?
 Could use circle thingy to pass through objects to change their stats somehow?, states?,
 `breakables?
-Other abilities?, such as more cool ways to use circle thingy to attack?
--Double circle thingies, front and back opposite sides
-
-New player abilities:
-Action 1 : Swing soul blade. Button press = swing soul blade from right side to the front from player, outwards. On button release = return soul blade will complete arc and return to your left side. Attacking in successsion will alternate the side the blade starts on, resulting in swingingthe soul blade back and forth. Until you let go of the button, the soul blade will stay in front of you, allowing you to do spinning attacks by moving your character around in a circle. Soul blade positioning will be basedo nt he player's forward, thus attack direction is controlled by your movement facing direction.
-Action 2 : Boomerang throw. On button press, throws your soul blade straight forward a considerable distance. After it reaches this peak distance, it will begin to return to you. Whilst it is thrown, you cannot perform action 1 attacks.
-Action 3 : Apire towards soul blade. On button press, whilst soul blade is thrown during action 2
+-Double circle thingies, front and back opposite sides?
 
 Circle thingy name ideas: Sash, Air Blade, Razer, Wings, Vorpal Sash, Vorpal Wing, State Blade,
 `Twin Vorpal Wings, Soul Orb, Chi Blade, Soul Pulse, Wraith Whip, Umbra, Spirit Sash, Ego Blade,
@@ -22,8 +16,7 @@ Circle thingy name ideas: Sash, Air Blade, Razer, Wings, Vorpal Sash, Vorpal Win
 Final names:
 Soul Blade
 Spirit Sash
-Umbra Orb
-Wraith Whip
+Surge Orb
 Vorpal Wing
 
 Gameplay:
@@ -35,14 +28,13 @@ Cross gaps with incarnation Aspire mechanic
 Floor patterns Visuals to indicate things?
 Screen has spotlight effect on the player where everything around you is dark, the area of
 `brightness will continue to enlargen as you progress through the game
-You will need to find you way through the levels, completing puzzles and defeating foes along the
-`way
+You will need to find you way through the levels, defeating foes along the way
 Enemies will approach you from the darkness, mainly in passageways and the front of larger rooms
 Some rooms as mini-boss fights where you'll be locked in and waves of enemies will surround you
 Some levels aren't explorative but solely for a large boss fight where the whole level is the
 fighting stage
 You have a Will Guage that reflects how strong your attacks are, everytime you defeat an enemy
-`your Will Guage will rise, everytime you get hit by an enemy your Will Guage will lower
+`your Will Guage will rise, everytime you get hit by an enemy your Will Guage will lower?
 You have a Concentration Guage that reflects how long you can materialise your incarnation, as
 `long as you are incarnating the Concentration Guage will drop, when not incarnating it will rise,
 `upon reaching 0 you are forcefully stopped from incarnating until it reaches 10% again
@@ -57,13 +49,12 @@ The game's main menu will have a simplistic black screen design with a pulsing g
 In the level selection screen it will show locked harder difficulties
 
 Title:
--Mentality Incarnated-
+-Mentality Incarnate-
 
 Enemies:
 Based on different negative mental paths.
 - Lost - unpredictable movement direction/attacks
 - Doubt - generic/common, slow crawling
-
 - Fright - generic/less common, quick/sudden
 - Sadness - Crying attacks? Leaves pools/puddle of tears?
 - Temptation - rare, lead you to loot but lead you away from the goal, reach failed/gameover
@@ -94,7 +85,7 @@ Obstacles & Interactables:
 - 
 
 Story:
-I want this game to be an incarnation of one's mentality where the goal is to sturggle through
+I want this game to be an incarnation of one's mentality where the goal is to struggle through
 negative thoughts and battle your way to 'defeat life' and go beyond, believing in your own
 power, your own will.
 -Start-

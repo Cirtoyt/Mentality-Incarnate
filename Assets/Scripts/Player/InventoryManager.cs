@@ -2,13 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum WeaponIDs
+public enum WeaponIDs : int
 {
-    soulBlade = 0,
-    spiritSash,
-    umbraOrb,
-    wraithWhip,
-    vorpalWing
+    SoulBlade = 0,
+    SpiritSash,
+    SurgeOrb,
+    SorpalWing
 }
 
 public class InventoryManager : MonoBehaviour
@@ -33,22 +32,21 @@ public class InventoryManager : MonoBehaviour
         // Test button
         if (Input.GetKeyDown("g"))
         {
-            EquipWeapon((int)WeaponIDs.soulBlade);
+            EquipWeapon((int)WeaponIDs.SoulBlade);
         }
     }
 
     private void InitialiseWeapons()
     {
-        weaponRefs.Insert((int)WeaponIDs.soulBlade, (GameObject)Resources.Load("weapons/SoulBlade", typeof(GameObject)));
-        //weaponRefs.Insert((int)WeaponIDs.spiritSash, (GameObject)Resources.Load("weapons/SpiritSash", typeof(GameObject)));
-        //weaponRefs.Insert((int)WeaponIDs.umbraOrb, (GameObject)Resources.Load("weapons/UmbraOrb", typeof(GameObject)));
-        //weaponRefs.Insert((int)WeaponIDs.wraithWhip, (GameObject)Resources.Load("weapons/WraithWhip", typeof(GameObject)));
-        //weaponRefs.Insert((int)WeaponIDs.vorpalWing, (GameObject)Resources.Load("weapons/VorpalWing", typeof(GameObject)));
+        weaponRefs.Insert((int)WeaponIDs.SoulBlade, (GameObject)Resources.Load("weapons/SoulBlade", typeof(GameObject)));
+        //weaponRefs.Insert((int)WeaponIDs.SpiritSash, (GameObject)Resources.Load("weapons/SpiritSash", typeof(GameObject)));
+        //weaponRefs.Insert((int)WeaponIDs.SurgeOrb, (GameObject)Resources.Load("weapons/SurgeOrb", typeof(GameObject)));
+        //weaponRefs.Insert((int)WeaponIDs.VorpalWing, (GameObject)Resources.Load("weapons/VorpalWing", typeof(GameObject)));
     }
 
     public void EquipWeapon(int _ID)
     {
-        GameObject.Destroy(equippedWeapon1);
+        Destroy(equippedWeapon1);
 
         equippedWeapon1 = Instantiate(weaponRefs[_ID]);
         equippedWeapon1.name = "SoulBlade1";
