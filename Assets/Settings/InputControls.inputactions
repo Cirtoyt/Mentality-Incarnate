@@ -52,6 +52,30 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "Primary Attack",
+                    "type": "Button",
+                    "id": "329e6f0b-c8f4-4530-a7c3-7148e0341309",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Secondary Attack",
+                    "type": "Button",
+                    "id": "7c8e690e-d06d-4f51-92d5-717305df770b",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Primary Skill ",
+                    "type": "Button",
+                    "id": "b8589ccb-4cab-41ee-aa87-53ae687575ed",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -250,6 +274,39 @@
                     "processors": "",
                     "groups": "Keyboard And Mouse",
                     "action": "TestAction1",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c60e5273-f1ae-47f4-99fc-595254a0707d",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard And Mouse",
+                    "action": "Primary Attack",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c854c7d2-cd4a-4745-a13d-c38125daacf6",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard And Mouse",
+                    "action": "Secondary Attack",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "12f728a1-30ff-4e68-b87c-7691a19b9502",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard And Mouse",
+                    "action": "Primary Skill ",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

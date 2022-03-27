@@ -15,3 +15,5 @@ MonoBehaviour:
   weaponName: Soul Blade
   weaponPrefab: {fileID: 2993424588941699125, guid: 3057992157e84544b9fdf6872a14af5f,
     type: 3}
+  weaponController: {fileID: 7377580277619140879, guid: c6c3a49fa1d066449a698e0829c9f5fa,
+    type: 3}

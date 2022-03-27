@@ -7,4 +7,5 @@ public class WeaponSO : ScriptableObject
 {
     public string weaponName;
     public GameObject weaponPrefab;
+    public GameObject weaponController;
 }

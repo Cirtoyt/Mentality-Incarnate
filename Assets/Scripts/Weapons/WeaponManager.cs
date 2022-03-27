@@ -8,18 +8,10 @@ public class WeaponManager : MonoBehaviour
     [SerializeField] private List<WeaponSO> weaponIndex;
     [SerializeField] private Transform playerArm;
 
+    public WeaponController currentWeaponController { get; private set; }
+
     private WeaponSO currentWeaponSO;
     private GameObject currentWeapon;
-
-    void Start()
-    {
-        
-    }
-
-    void Update()
-    {
-        
-    }
 
     private void OnTestAction1()
     {
@@ -35,8 +27,10 @@ public class WeaponManager : MonoBehaviour
         }
 
         // Add new weapon
-        currentWeapon = Instantiate(newWeaponSO.weaponPrefab, playerArm);
+        currentWeaponController = Instantiate(newWeaponSO.weaponController, transform).GetComponent<WeaponController>();
+        currentWeaponController.name = newWeaponSO.weaponController.name;
+        currentWeapon = Instantiate(newWeaponSO.weaponPrefab, transform);
         currentWeapon.name = newWeaponSO.weaponPrefab.name;
-        //currentWeapon.transform.localPosition = Vector3.zero;
+        currentWeaponController.SetupController(transform, currentWeapon.GetComponent<Weapon>());
     }
 }

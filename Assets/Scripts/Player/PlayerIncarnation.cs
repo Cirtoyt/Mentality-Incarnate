@@ -70,7 +70,7 @@ public class PlayerIncarnation : MonoBehaviour
     
     void Update()
     {
-        if (stateCtlr.playerState == PlayerStates.active)
+        if (true)// stateCtlr.playerState == PlayerStates.active)
         {
             // Get current arm direction
             UpdateSmoothedFacingDirection();
@@ -113,10 +113,10 @@ public class PlayerIncarnation : MonoBehaviour
                 // ~Aspiring~
 
                 // Begin aspire
-                if (stateCtlr.inputMode == InputModes.keyboardAndMouse && Input.GetButton("Aspire Mouse") &&
-                    stateCtlr.playerState != PlayerStates.aspiring && castCount == castSpeed ||
+                if (stateCtlr.inputMode == InputModes.keyboardAndMouse && Input.GetButton("Aspire Mouse") /*&&
+                    stateCtlr.playerState != PlayerStates.aspiring && castCount == castSpeed*/ ||
                     stateCtlr.inputMode == InputModes.controller && Input.GetAxisRaw("Aspire Controller") >=
-                    ctlrApireSensitivity && stateCtlr.playerState != PlayerStates.aspiring && castCount == castSpeed)
+                    ctlrApireSensitivity && /*stateCtlr.playerState != PlayerStates.aspiring &&*/ castCount == castSpeed)
                 {
                     BeginApire();
                 }
@@ -132,7 +132,7 @@ public class PlayerIncarnation : MonoBehaviour
         }
 
         // ~Aspiring action~
-        if (stateCtlr.playerState == PlayerStates.aspiring)
+        if (false)// stateCtlr.playerState == PlayerStates.aspiring)
         {
             UpdateAspireCounter();
             
@@ -224,7 +224,7 @@ public class PlayerIncarnation : MonoBehaviour
 
     private void BeginApire()
     {
-        stateCtlr.playerState = PlayerStates.aspiring;
+        //stateCtlr.playerState = PlayerStates.aspiring;
 
         playerRB.simulated = false;
 
@@ -239,7 +239,7 @@ public class PlayerIncarnation : MonoBehaviour
 
     private void EndAspire()
     {
-        stateCtlr.playerState = PlayerStates.active;
+        //stateCtlr.playerState = PlayerStates.active;
         playerRB.simulated = true;
         arm1Anim.enabled = true;
         aspireCount = 0;

@@ -166,7 +166,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9765735dd47a2e140b08a51167bf5455, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerState: 0
   inputMode: 0
 --- !u!1 &205419317
 GameObject:
@@ -1777,7 +1776,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &782428207
 Transform:
   m_ObjectHideFlags: 0
@@ -4812,7 +4811,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1006226506
 Transform:
   m_ObjectHideFlags: 0
@@ -4867,7 +4866,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: df97e041e37d6e240a8998bd4c5661e3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -8231,7 +8230,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1769932320}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bdae435e50e8a5f44b075565171d8a1e, type: 3}
   m_Name: 
@@ -8259,7 +8258,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Actions: {fileID: -944628639613478452, guid: 7210b52e23c5cfc459ab4b0b56b48b15,
     type: 3}
-  m_NotificationBehavior: 0
+  m_NotificationBehavior: 1
   m_UIInputModule: {fileID: 0}
   m_DeviceLostEvent:
     m_PersistentCalls:
@@ -8310,6 +8309,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stateCtlr: {fileID: 103994807}
   movementSpeed: 3.55
+  rotationSpeed: 600
 --- !u!850595691 &1868051035
 LightingSettings:
   m_ObjectHideFlags: 0
