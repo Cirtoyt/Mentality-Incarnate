@@ -5,8 +5,6 @@ using UnityEngine.InputSystem;
 
 public class Player : MonoBehaviour
 {
-    [Header("Statics")]
-    [SerializeField] private StateController stateCtlr;
     [Header("Options")]
     [SerializeField] private float movementSpeed = 1;
     [SerializeField] private float rotationSpeed = 1;
@@ -19,11 +17,6 @@ public class Player : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         weaponManager = GetComponent<WeaponManager>();
-    }
-
-    void Update()
-    {
-        
     }
 
     private void FixedUpdate()
@@ -67,6 +60,6 @@ public class Player : MonoBehaviour
 
     public void ResetPlayer()
     {
-
+        weaponManager.currentWeaponController.ResetController();
     }
 }

@@ -123,50 +123,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &103994805
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 103994806}
-  - component: {fileID: 103994807}
-  m_Layer: 0
-  m_Name: Game Controller
-  m_TagString: GameController
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &103994806
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 103994805}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &103994807
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 103994805}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9765735dd47a2e140b08a51167bf5455, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  inputMode: 0
 --- !u!1 &205419317
 GameObject:
   m_ObjectHideFlags: 0
@@ -178,7 +134,6 @@ GameObject:
   - component: {fileID: 205419318}
   - component: {fileID: 205419319}
   - component: {fileID: 205419321}
-  - component: {fileID: 205419320}
   m_Layer: 0
   m_Name: PA1 Sprite
   m_TagString: Untagged
@@ -207,7 +162,7 @@ SpriteRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 205419317}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -252,18 +207,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &205419320
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 205419317}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d475c513a9eb6b849a44de47a6bc503f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!95 &205419321
 Animator:
   serializedVersion: 3
@@ -1483,7 +1426,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &637449189
 GameObject:
@@ -1558,7 +1501,7 @@ Transform:
   m_Children:
   - {fileID: 665673525}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &665673524
 GameObject:
@@ -1672,7 +1615,7 @@ Transform:
   m_Children:
   - {fileID: 1905168670}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &721736478
 GameObject:
@@ -1790,7 +1733,7 @@ Transform:
   m_Children:
   - {fileID: 1524476824}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &782428208
 MonoBehaviour:
@@ -4710,7 +4653,7 @@ Transform:
   - {fileID: 1276736785}
   - {fileID: 637449190}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &950242763
 GameObject:
@@ -5040,7 +4983,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1251220239
 GameObject:
@@ -5159,7 +5102,7 @@ Transform:
   m_Children:
   - {fileID: 1131498599}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1377605316
 GameObject:
@@ -5190,7 +5133,7 @@ Transform:
   m_Children:
   - {fileID: 721736479}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1461079983
 GameObject:
@@ -5252,7 +5195,7 @@ Transform:
   m_Children:
   - {fileID: 1881014952}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1467819625
 GameObject:
@@ -8145,7 +8088,6 @@ GameObject:
   - component: {fileID: 1769932323}
   - component: {fileID: 1769932327}
   - component: {fileID: 1769932328}
-  - component: {fileID: 1769932325}
   - component: {fileID: 1769932324}
   m_Layer: 0
   m_Name: Player
@@ -8190,7 +8132,7 @@ Transform:
   - {fileID: 1006226506}
   - {fileID: 1461079984}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!58 &1769932323
 CircleCollider2D:
@@ -8223,27 +8165,6 @@ MonoBehaviour:
   weaponIndex:
   - {fileID: 11400000, guid: 2a46920d9fd926b469a8e9c3396aff53, type: 2}
   playerArm: {fileID: 1461079984}
---- !u!114 &1769932325
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1769932320}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bdae435e50e8a5f44b075565171d8a1e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  facingDirectionSmoothing: 0.08
-  ctlrCastSensitivity: 0.325
-  reach: 1.6
-  castSpeed: 0.11
-  passiveSpinSpeed: 10
-  movingSpinSpeed: 1.4
-  ctlrApireSensitivity: 0.325
-  aspireSpeed: 0.25
-  aspireSpinSpeed: 3.2
 --- !u!114 &1769932327
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8292,7 +8213,7 @@ MonoBehaviour:
     m_ActionName: Default Action Map/Aspire[/Mouse/rightButton,/XInputControllerWindows/buttonSouth]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
-  m_DefaultActionMap: Default Action Map
+  m_DefaultActionMap: Default Action Controls
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 519420031}
 --- !u!114 &1769932328
@@ -8307,7 +8228,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40b50adeb398d2241bab2ce5defecc2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stateCtlr: {fileID: 103994807}
   movementSpeed: 3.55
   rotationSpeed: 600
 --- !u!850595691 &1868051035
