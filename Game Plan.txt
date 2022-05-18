@@ -1,5 +1,5 @@
 New player abilities:
-Action 1 : Swing soul blade. Button press = swing soul blade from right side to the front from player, outwards, then will complete arc and return to your left side. Attacking in successsion will alternate the side the blade starts on, resulting in swinging the soul blade back and forth. Soul blade positioning will be based on the player's forward, thus attack direction is controlled by your movement facing direction, allowing you to do spinning attacks by moving your character around in a circle
+Action 1 : Swing soul blade. Button press = swing soul blade from right side to the front from player, outwards, then will complete arc and return to your left side. Attacking in successsion will alternate the side the blade starts on, resulting in swinging the soul blade back and forth. Soul blade positioning will be based on the player's forward, thus attack direction is controlled by your movement facing direction on begin attack
 Action 2 : Boomerang throw. On button press, throws your soul blade straight forward a considerable distance. After it reaches this peak distance, it will begin to return to you. Whilst it is thrown, you cannot perform action 1 attacks.
 Action 3 : Apire towards soul blade. On button press, whilst soul blade is thrown during action 2
 
@@ -22,19 +22,20 @@ Vorpal Wing
 Gameplay:
 Top down
 Once level complete, floor panel turns on and you rise upwards to progress to new level
-Droppable items from objects that are broken with incarnation (power boosts, weapons)
+Droppable items from objects that are broken with incarnation ([power boosts], weapons)
 Move around with arrow keys/joystick
 Cross gaps with incarnation Aspire mechanic
 Floor patterns Visuals to indicate things?
 Screen has spotlight effect on the player where everything around you is dark, the area of
 `brightness will continue to enlargen as you progress through the game
-You will need to find you way through the levels, defeating foes along the way
+You will need to find you way through the levels, completing puzzles and defeating foes along the
+`way
 Enemies will approach you from the darkness, mainly in passageways and the front of larger rooms
 Some rooms as mini-boss fights where you'll be locked in and waves of enemies will surround you
 Some levels aren't explorative but solely for a large boss fight where the whole level is the
 fighting stage
 You have a Will Guage that reflects how strong your attacks are, everytime you defeat an enemy
-`your Will Guage will rise, everytime you get hit by an enemy your Will Guage will lower?
+`your Will Guage will rise, everytime you get hit by an enemy your Will Guage will lower
 You have a Concentration Guage that reflects how long you can materialise your incarnation, as
 `long as you are incarnating the Concentration Guage will drop, when not incarnating it will rise,
 `upon reaching 0 you are forcefully stopped from incarnating until it reaches 10% again
@@ -56,9 +57,8 @@ Based on different negative mental paths.
 - Lost - unpredictable movement direction/attacks
 - Doubt - generic/common, slow crawling
 - Fright - generic/less common, quick/sudden
-- Sadness - Crying attacks? Leaves pools/puddle of tears?
-- Temptation - rare, lead you to loot but lead you away from the goal, reach failed/gameover
-  `state if you keep following (fall for) temptations
+- Sadness - switches between idle sobbing and bursts of ranged crying (water gun) attacks, leaves puddles/lines of tears on ground as idle/moves
+- Temptation - rare, lead you to loot but lead you away from the goal, if you keep following (fall for) temptations, goals will turn into chests instead when you reach them, moving the goal further away from you
 - Ashamed - Weeping angel style?
 - Confusion - Messes with vision?
 - Paranoia - Creates ghosts/clones?
@@ -66,7 +66,7 @@ Based on different negative mental paths.
 - Resignation - Stone statues that do not let you past
 - Cowardly - Runs away faster than the player can move, Requires luring into a location via
   `boxing them in?
-- Depression - Slows the player down
+- Depression - When in sight range, it will start to slow down your movement and attack speed until you reach a max slow multiplier. This multiplier can increase for each Depression enemy that sees you at the same time (kind of like stacking). When you defeat any one Depression enemy, you'll return to normal speed for a brief grafe period, then this will weat off and any other Depression enemies will start to slow you down again
 - Self-Destructive - Blows up like a creeper upon getting close to you
 Bosses:
 - Arrogance?
@@ -93,67 +93,108 @@ Blank screen, fading text: tellings of how we have negative emotions, thoughts t
 really important.
 
 Todo:
-0.0.1
-✅ - Create tile system
-✅  `- Add layering
-✅  `- Add collision
-✅ - Player Movement
-✅ - Cast incarnation animation
-✅ - Rotate incarnation around player
-✅  `- Add rotation to incarnation as you move it around
+0.0.1 - The Player Update
+✅ - Player movement
 ✅ - Camera follow player
-✅ - Add incarnation particle effects
-✅  `- Active particles
-✅  `- Active solid trail
-✅  `- Stop casting pop
-✅ - Controller support
-✅ - Smooth casting incarnation rotation
-✅ - Aspire towards your will, move player to incarnation position
-❎  `- Collision detection, preventing Aspiring
-❎ - Build layer 1
+✅ - Player swing attack
+✅ - Player will guage UI
+❎ - Player idle animation
+❎ - Player walk animation
+❎ - Player swing animation
+❎ - Weapon visual effects
 ------
-0.0.2
-❎ - Create enemies
-❎  `- Add A* pathfinding/Head towards player
-❎ - Create damage system
-❎ - Playing with lighting
-❎  `- Make everything dark
-❎  `- Create glow effect on player
+0.0.2 - The Combat Update
+❎ - Doubt enemy chase system
+❎ - Doubt enemy attack system
+❎ - Camera shake on player hit
+❎ - Player death animation
+❎ - Doubt enemy health system
+❎ - Doubt enemy health UI
+❎ - Player deals damage to enemies
+❎ - Camera shake on hit enemy
+❎ - Enemy gives will points on kill
+❎ - Doubt enemy idle animation
+❎ - Doubt enemy walk animation
+❎ - Doubt enemy chase animation
+❎ - Doubt enemy attack animation
+❎ - Doubt enemy death animation
+❎ - Enemy killed visual effects (Will particles pop, then flow towards player)
+❎ - Z-layering system
 ------
-0.0.3
-❎ - Build layer 2
-❎ - Create layer transition effect
-❎  `- Create triggers (triggered by incarnation)
-❎    `- Create 'on' state light glow
-❎  `- Create trap door opening
-❎  `- Create layer change cutscene (when standing in open trapdoor)
+0.0.3 - The Lighting Update
+❎ - Build test level
+❎ - Test Level lighting
+❎ - Player glow lighting
+❎ - Dark camera overlay
 ------
-0.0.4
-❎ - Create inventory/player stats menu
-❎ - Create items
-❎ - Create weapon swapping system
-❎ - Create camera shake system
-❎  `- Dropping into new layers
-❎  `- Getting hit
+0.0.4 - The Menus Update
+❎ - Main menu UI layout
+❎ - Options menu (prefab used in main menu and in-game)
+❎ - Goal object & Level complete animation
+❎ - Proceed to next level menu
+❎ - Level failed animation
+❎ - Level failed menu
 ------
-Stretch goals
-❎ - Create main menu scene
-❎  `- Create scene transition system
-❎  `- Create loading scene
-❎ - Add music/sfx
-❎  `- Add main menu music
-❎  `- Add in-game background music
-❎  `- Add casting incarnation sfx
-❎ - Create tutorial subtitles
-❎ - Create enter layer overlay text
-❎ - Create 'equipped x' overlay text
-❎ - Build layer 3
-❎ - Build layer 4
-❎ - Build layer 5
-❎ - Create ability upgrading tree system
+0.0.5 - The Skills Update
+❎ - Player throw attack
+❎ - Player aspire skill
+❎ - Player throw animation
+❎ - Player aspire visual effects
+❎ - Show goal route visual effect + A* (costs will points)
+------
+0.0.6 - The Dungeon Update
+❎ - Intro tutorial sequence
+❎ - Build level 1 (tutorial level)
+❎ - Level 1 lighting
+❎ - Breakable chest to reward courage points
+❎ - Lights that turn on when hit with soul blade (easier to see level)
+❎ - Build level 2
+❎ - Level 2 lighting
+❎ - Breakable environmental objects (do nothing on break)
+❎ - Build level 3
+❎ - Level 3 lighting
+------
+0.0.7 - The Sounds Update
+❎ - Sound system package
+❎ - Sounds for player
+❎ - Sounds for enemies
+❎ - Sounds for menus
+❎ - Background Music (in-game & menus)
+------
+0.0.8 - The Starter Enemies Update
+❎ - Fright enemy
+❎ - Sadness enemy
+❎ - Sadness enemy ranged combat system
+❎ - Depression enemy
+❎ - Depression enemy slow-down system
+❎ - Temptation enemy
+❎ - Goal turns into chest & repositions system for Temptation enemy system
+------
+0.0.9 - The Console Update
+❎ - Controller support
+------
+0.1.0 - Beta Release!
+❎ - Release on Itch for WebGL & PC platforms
+------
+0.1.1 - The Deeper Dungeon Update
+❎ - Add more skills
+❎ - Add more weapons
+------
+0.1.2 - The Skill Tree Update
+❎ - Add more skills
+❎ - Add more weapons
+❎ - Add skill/weapon shop/merchant
+------
 
 Credits:
 https://piratepoots.itch.io/dungeon-starter
 https://jeresikstus.itch.io/roguelike-dungeon-tileset-16x16
 https://felix-pixels.itch.io/32-32dungeon-crawler
 https://atari-boy.itch.io/dungeonasset
+https://0x72.itch.io/dungeontileset-ii
+https://nijikokun.itch.io/dungeontileset-ii-extended
+https://anritool.itch.io/cr-tileset
+https://itch.io/post/423467
+https://mounirtohami.itch.io/pixel-art-gui-elements
+https://mounirtohami.itch.io/minimalpixel-font
+https://vrtxrry.itch.io/dungeonfont

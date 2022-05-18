@@ -5,9 +5,12 @@ using UnityEngine.InputSystem;
 
 public class Player : MonoBehaviour
 {
-    [Header("Options")]
+    [Header("Settings")]
     [SerializeField] private float movementSpeed = 1;
     [SerializeField] private float rotationSpeed = 1;
+    [SerializeField] private int maxWillPower = 100;
+    [Header("Debug")]
+    [SerializeField] private int willPower;
 
     private Rigidbody2D rb;
     private WeaponManager weaponManager;
@@ -17,6 +20,8 @@ public class Player : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         weaponManager = GetComponent<WeaponManager>();
+
+        willPower = maxWillPower;
     }
 
     private void FixedUpdate()
@@ -62,4 +67,6 @@ public class Player : MonoBehaviour
     {
         weaponManager.currentWeaponController.ResetController();
     }
+
+    public int GetWillPower() => willPower;
 }
