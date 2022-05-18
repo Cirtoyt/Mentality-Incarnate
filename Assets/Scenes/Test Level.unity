@@ -8229,7 +8229,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementSpeed: 3.55
-  rotationSpeed: 600
+  rotationSpeed: 1200
 --- !u!850595691 &1868051035
 LightingSettings:
   m_ObjectHideFlags: 0

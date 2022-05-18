@@ -55,11 +55,11 @@
                 },
                 {
                     "name": "Primary Attack",
-                    "type": "Button",
+                    "type": "Value",
                     "id": "329e6f0b-c8f4-4530-a7c3-7148e0341309",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "Analog",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "Press(behavior=2)"
                 },
                 {
                     "name": "Secondary Attack",

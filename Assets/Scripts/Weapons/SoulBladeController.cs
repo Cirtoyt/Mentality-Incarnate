@@ -1,11 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class SoulBladeController : WeaponController
 {
     [SerializeField] private float swingAttackTime = 0.5f;
     [SerializeField] private float swingAttackDistance = 0.5f;
+    [SerializeField] private AnimationCurve swingAttackDistanceSmoothing;
+    [SerializeField] private float swingAttackBladeSpinSpeed = 1;
 
     private enum AttackStates
     {
@@ -20,8 +23,11 @@ public class SoulBladeController : WeaponController
     //private WeaponManager weaponManager;
     private SoulBlade soulBlade;
     private AttackStates attackState;
+    private bool queueSwingAttack;
     private bool swingFromRight;
-    private float attackTimer;
+    private Vector3 currentSwingPivotDir;
+    private float currentSwingRotationDir;
+    private float swingAttackTimer;
 
     private void Awake()
     {
@@ -37,7 +43,7 @@ public class SoulBladeController : WeaponController
         this.soulBlade = (SoulBlade)soulBlade;
     }
 
-    void Update()
+    void FixedUpdate()
     {
         switch (attackState)
         {
@@ -54,55 +60,103 @@ public class SoulBladeController : WeaponController
         }
     }
 
-    private void OnPrimaryAttack()
+    private void OnPrimaryAttack(InputValue value)
     {
-        if (attackState == AttackStates.Idle)
+        if (value.Get<float>() >= 0.5f)
         {
-            Debug.Log("Began primary attack");
-            attackState = AttackStates.PrimaryAttackSwinging;
+            if (attackState == AttackStates.Idle)
+            {
+                //Debug.Log("Began primary attack");
+                attackState = AttackStates.PrimaryAttackSwinging;
+
+                if (swingFromRight)
+                {
+                    currentSwingPivotDir = player.right;
+                    currentSwingRotationDir = 180;
+                }
+                else
+                {
+                    currentSwingPivotDir = -player.right;
+                    currentSwingRotationDir = -180;
+                }
+            }
+            else
+            {
+                queueSwingAttack = true;
+            }
+        }
+        else
+        {
+            queueSwingAttack = false;
         }
     }
 
     private void HandleSwingAttack()
     {
-        attackTimer += Time.deltaTime;
+        swingAttackTimer += Time.deltaTime;
 
-        float attackTimerPerc = attackTimer / swingAttackTime;
+        bool doneSwinging = false;
+        float attackTimerPerc = swingAttackTimer / swingAttackTime;
 
         if (attackTimerPerc >= 1)
         {
             attackTimerPerc = 1;
+            doneSwinging = true;
         }
 
-        // For running from 0 to 0.5 then back to 0 during the timer running from 0 to 1
-        float attackTimerHalfPeakPerc = attackTimerPerc;
-        if (attackTimerPerc > 0.5f)
-            attackTimerHalfPeakPerc = 1 - attackTimerPerc;
+        // Position
 
+        // For running from 0 to 1 then back to 0 during the timer running from 0 to 1
+        float attackTimerHalfPeakPerc = attackTimerPerc * 2;
+        if (attackTimerHalfPeakPerc > 1)
+            attackTimerHalfPeakPerc = 2 - attackTimerHalfPeakPerc;
+
+        // Set length away from player
+        Vector3 targetPos = currentSwingPivotDir * swingAttackDistance * swingAttackDistanceSmoothing.Evaluate(attackTimerHalfPeakPerc);
+        // Set rotation around player
+        targetPos = Quaternion.AngleAxis(currentSwingRotationDir * attackTimerPerc, Vector3.forward) * targetPos;
+        // Set final local position
+        soulBlade.transform.position = player.position + targetPos;
+
+        // Rotation
+
+        // Get spin direction
+        float rotationAngle;
         if (swingFromRight)
-        {
-            // Set length away from player
-            Vector2 playerRight = Quaternion.Euler(0, 0, 90) * player.up;
-            Vector2 targetPos = playerRight * swingAttackDistance * attackTimerHalfPeakPerc;
-            // Set rotation around player
-            targetPos = Quaternion.Euler(0, 0, -180 * attackTimerPerc) * targetPos;
-            // Set final local position
-            soulBlade.transform.localPosition = targetPos;
-        }
+            rotationAngle = swingAttackBladeSpinSpeed;
         else
-        {
-            Vector2 playerLeft = Quaternion.Euler(0, 0, -90) * player.up;
-            Vector2 targetPos = playerLeft * swingAttackDistance * attackTimerHalfPeakPerc;
-            targetPos = Quaternion.Euler(0, 0, 180 * attackTimerPerc) * targetPos;
-            soulBlade.transform.localPosition = targetPos;
-        }
+            rotationAngle = -swingAttackBladeSpinSpeed;
+        // Update rotation with angle
+        soulBlade.transform.Rotate(Vector3.forward, rotationAngle);
 
-        if (attackTimerPerc >= 1)
+        // Check attack is done
+        if (doneSwinging)
         {
-            // End attack
-            attackTimer = 0;
-            attackState = AttackStates.Idle;
+            swingAttackTimer = 0;
             swingFromRight = !swingFromRight;
+            soulBlade.transform.localRotation = Quaternion.identity;
+
+            if (!queueSwingAttack)
+            {
+                // End attack
+                attackState = AttackStates.Idle;
+            }
+            else
+            {
+                queueSwingAttack = false;
+
+                // Stay in swing attack state and flip swing direction vars
+                if (swingFromRight)
+                {
+                    currentSwingPivotDir = player.right;
+                    currentSwingRotationDir = 180;
+                }
+                else
+                {
+                    currentSwingPivotDir = -player.right;
+                    currentSwingRotationDir = -180;
+                }
+            }
         }
     }
 
@@ -134,7 +188,7 @@ public class SoulBladeController : WeaponController
 
     public override void ResetController()
     {
-        attackTimer = 0;
+        swingAttackTimer = 0;
         attackState = AttackStates.Idle;
         swingFromRight = true;
     }
