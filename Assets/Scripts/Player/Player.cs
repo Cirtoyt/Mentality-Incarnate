@@ -5,6 +5,10 @@ using UnityEngine.InputSystem;
 
 public class Player : MonoBehaviour
 {
+    [Header("Statics")]
+    [SerializeField] private Transform weaponTarget;
+    [SerializeField] private Animator anim;
+    [SerializeField] private Transform bodySprite;
     [Header("Settings")]
     [SerializeField] private float movementSpeed = 1;
     [SerializeField] private float rotationSpeed = 1;
@@ -16,12 +20,12 @@ public class Player : MonoBehaviour
     private WeaponManager weaponManager;
     private Vector2 moveDirection;
 
+    private int lives = 10;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         weaponManager = GetComponent<WeaponManager>();
-
-        willPower = maxWillPower;
     }
 
     private void FixedUpdate()
@@ -30,6 +34,22 @@ public class Player : MonoBehaviour
         {
             Move();
             Rotate();
+
+            anim.SetBool("IsWalking", true);
+
+            float FacingRightPDot = Vector3.Dot(moveDirection, Vector3.right);
+            if (FacingRightPDot > 0)
+            {
+                bodySprite.localScale = new Vector3(1, 1, 1);
+            }
+            else if (FacingRightPDot < 0)
+            {
+                bodySprite.localScale = new Vector3(-1, 1, 1);
+            }
+        }
+        else
+        {
+            anim.SetBool("IsWalking", false);
         }
     }
 
@@ -46,7 +66,7 @@ public class Player : MonoBehaviour
     private void Rotate()
     {
         Quaternion newRotation = Quaternion.LookRotation(Vector3.forward, moveDirection);
-        transform.rotation = Quaternion.RotateTowards(transform.rotation, newRotation, rotationSpeed * Time.fixedDeltaTime);
+        weaponTarget.rotation = Quaternion.RotateTowards(weaponTarget.rotation, newRotation, rotationSpeed * Time.fixedDeltaTime);
     }
 
     public void FreezePlayer()
@@ -69,4 +89,18 @@ public class Player : MonoBehaviour
     }
 
     public int GetWillPower() => willPower;
+
+    public void IncreaseWillPower(int amount)
+    {
+        willPower += amount;
+        if (willPower > maxWillPower)
+            willPower = maxWillPower;
+    }
+
+    public Transform GetWeaponTarget() => weaponTarget;
+
+    public void DealDamage(int damage)
+    {
+        lives -= damage;
+    }
 }

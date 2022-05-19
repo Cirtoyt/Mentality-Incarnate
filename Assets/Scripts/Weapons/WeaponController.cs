@@ -4,7 +4,7 @@ using UnityEngine;
 
 abstract public class WeaponController : MonoBehaviour
 {
-    abstract public void SetupController(Transform player, Weapon weapon);
+    abstract public void SetupController(Player player, Weapon weapon);
 
     abstract public void ResetController();
 }

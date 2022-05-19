@@ -17,6 +17,11 @@ public class WillPowerBar : MonoBehaviour
         slider = GetComponent<Slider>();
     }
 
+    private void Start()
+    {
+        slider.value = 0;
+    }
+
     void Update()
     {
         if (slider.value != player.GetWillPower())

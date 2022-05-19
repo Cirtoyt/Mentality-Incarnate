@@ -5,24 +5,76 @@ using Pathfinding;
 
 public class DoubtEnemyAI : MonoBehaviour
 {
-    public Transform target;
-    public float speed;
-    public float nextWaypointDistance;
-    public float pathUpdateRate;
+    [Header("Statics")]
+    [SerializeField] private Player player;
+    [SerializeField] private Animator anim;
+    [SerializeField] private Transform sprite;
+    [Header("Settings")]
+    [SerializeField] private Transform target;
+    [SerializeField] private int maxHealth = 20;
+    [SerializeField] private int willReward = 2;
+    [SerializeField] private float speed;
+    [SerializeField] private float nextWaypointDistance;
+    [SerializeField] private float pathUpdateRate;
 
-    Path path;
-    int currentWaypoint;
-    Seeker seeker;
-    Rigidbody2D rb;
+    private int health;
+    private Path path;
+    private int currentWaypoint;
+    private Seeker seeker;
+    private Rigidbody2D rb;
 
     void Start()
     {
+        health = maxHealth;
         currentWaypoint = 0;
         //reachedEndOfPath = false;
         seeker = GetComponent<Seeker>();
         rb = GetComponent<Rigidbody2D>();
 
         InvokeRepeating("UpdatePath", 0, pathUpdateRate);
+    }
+
+    private void Update()
+    {
+        if (rb.velocity != Vector2.zero)
+        {
+            anim.SetBool("IsWalking", true);
+
+            float FacingRightPDot = Vector3.Dot(rb.velocity, Vector3.right);
+            if (FacingRightPDot > 0)
+            {
+                sprite.localScale = new Vector3(1, 1, 1);
+            }
+            else if (FacingRightPDot < 0)
+            {
+                sprite.localScale = new Vector3(-1, 1, 1);
+            }
+        }
+        else
+        {
+            anim.SetBool("IsWalking", false);
+        }
+    }
+
+    void FixedUpdate()
+    {
+        if (path == null)
+            return;
+
+        if (currentWaypoint >= path.vectorPath.Count)
+            return;
+
+        Vector2 dir = ((Vector2)path.vectorPath[currentWaypoint] - rb.position).normalized;
+        Vector2 force = dir * speed * Time.fixedDeltaTime;
+
+        rb.AddForce(force);
+
+        float distance = Vector2.Distance(rb.position, path.vectorPath[currentWaypoint]);
+
+        if (distance < nextWaypointDistance)
+        {
+            currentWaypoint++;
+        }
     }
 
     void UpdatePath()
@@ -42,24 +94,13 @@ public class DoubtEnemyAI : MonoBehaviour
         }
     }
 
-    void FixedUpdate()
+    public void DealDamage(int damage)
     {
-        if (path == null)
-            return;
-
-        if (currentWaypoint >= path.vectorPath.Count)
-            return;
-
-        Vector2 dir = ((Vector2)path.vectorPath[currentWaypoint] - rb.position).normalized;
-        Vector2 force = dir * speed * Time.fixedDeltaTime;
-
-        rb.AddForce(force);
-
-        float distance = Vector2.Distance(rb.position, path.vectorPath[currentWaypoint]);
-
-        if ( distance < nextWaypointDistance)
+        health -= damage;
+        if (health <= 0)
         {
-            currentWaypoint++;
+            player.IncreaseWillPower(willReward);
+            Destroy(gameObject);
         }
     }
 }

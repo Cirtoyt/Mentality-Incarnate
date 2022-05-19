@@ -5,6 +5,8 @@ using UnityEngine.InputSystem;
 
 public class SoulBladeController : WeaponController
 {
+    [SerializeField] private float positionSmoothing = 1;
+    [SerializeField] private float rotationSmoothing = 1;
     [SerializeField] private float swingAttackTime = 0.5f;
     [SerializeField] private float swingAttackDistance = 0.5f;
     [SerializeField] private AnimationCurve swingAttackDistanceSmoothing;
@@ -19,9 +21,11 @@ public class SoulBladeController : WeaponController
         PrimarySkillTravelingToSoulBlade,
     }
 
-    private Transform player;
-    //private WeaponManager weaponManager;
+    private Player player;
+    private Transform weaponTarget;
     private SoulBlade soulBlade;
+    private Vector3 targetPos;
+    private Quaternion targetLocalRot;
     private AttackStates attackState;
     private bool queueSwingAttack;
     private bool swingFromRight;
@@ -37,16 +41,22 @@ public class SoulBladeController : WeaponController
         ResetController();
     }
 
-    override public void SetupController(Transform player, Weapon soulBlade)
+    override public void SetupController(Player player, Weapon soulBlade)
     {
         this.player = player;
         this.soulBlade = (SoulBlade)soulBlade;
+        weaponTarget = this.player.GetWeaponTarget();
+        this.soulBlade.SetPlayer(this.player);
     }
 
-    void FixedUpdate()
+    void Update()
     {
         switch (attackState)
         {
+            case AttackStates.Idle:
+                targetPos = weaponTarget.position;
+                targetLocalRot = weaponTarget.rotation;
+                break;
             case AttackStates.PrimaryAttackSwinging:
                 HandleSwingAttack();
                 break;
@@ -58,6 +68,10 @@ public class SoulBladeController : WeaponController
                 HandleAspireSkill();
                 break;
         }
+
+        // Smooth move weapon towards target pos/rot
+        soulBlade.transform.position = Vector3.Slerp(soulBlade.transform.position, targetPos, positionSmoothing);
+        soulBlade.transform.rotation = Quaternion.Slerp(soulBlade.transform.rotation, targetLocalRot, rotationSmoothing);
     }
 
     private void OnPrimaryAttack(InputValue value)
@@ -71,12 +85,12 @@ public class SoulBladeController : WeaponController
 
                 if (swingFromRight)
                 {
-                    currentSwingPivotDir = player.right;
+                    currentSwingPivotDir = weaponTarget.right;
                     currentSwingRotationDir = 180;
                 }
                 else
                 {
-                    currentSwingPivotDir = -player.right;
+                    currentSwingPivotDir = -weaponTarget.right;
                     currentSwingRotationDir = -180;
                 }
             }
@@ -112,11 +126,11 @@ public class SoulBladeController : WeaponController
             attackTimerHalfPeakPerc = 2 - attackTimerHalfPeakPerc;
 
         // Set length away from player
-        Vector3 targetPos = currentSwingPivotDir * swingAttackDistance * swingAttackDistanceSmoothing.Evaluate(attackTimerHalfPeakPerc);
+        targetPos = currentSwingPivotDir * swingAttackDistance * swingAttackDistanceSmoothing.Evaluate(attackTimerHalfPeakPerc);
         // Set rotation around player
         targetPos = Quaternion.AngleAxis(currentSwingRotationDir * attackTimerPerc, Vector3.forward) * targetPos;
         // Set final local position
-        soulBlade.transform.position = player.position + targetPos;
+        targetPos = weaponTarget.position + targetPos;
 
         // Rotation
 
@@ -127,14 +141,14 @@ public class SoulBladeController : WeaponController
         else
             rotationAngle = -swingAttackBladeSpinSpeed;
         // Update rotation with angle
-        soulBlade.transform.Rotate(Vector3.forward, rotationAngle);
+        targetLocalRot = Quaternion.AngleAxis(rotationAngle, Vector3.forward);
 
         // Check attack is done
         if (doneSwinging)
         {
             swingAttackTimer = 0;
             swingFromRight = !swingFromRight;
-            soulBlade.transform.localRotation = Quaternion.identity;
+            targetLocalRot = Quaternion.identity;
 
             if (!queueSwingAttack)
             {
@@ -148,12 +162,12 @@ public class SoulBladeController : WeaponController
                 // Stay in swing attack state and flip swing direction vars
                 if (swingFromRight)
                 {
-                    currentSwingPivotDir = player.right;
+                    currentSwingPivotDir = weaponTarget.right;
                     currentSwingRotationDir = 180;
                 }
                 else
                 {
-                    currentSwingPivotDir = -player.right;
+                    currentSwingPivotDir = -weaponTarget.right;
                     currentSwingRotationDir = -180;
                 }
             }
@@ -164,7 +178,7 @@ public class SoulBladeController : WeaponController
     {
         if (attackState == AttackStates.Idle)
         {
-            attackState = AttackStates.SecondaryAttackFlyingAway;
+            //attackState = AttackStates.SecondaryAttackFlyingAway;
         }
     }
 
@@ -177,7 +191,7 @@ public class SoulBladeController : WeaponController
     {
         if (attackState == AttackStates.Idle)
         {
-            attackState = AttackStates.PrimarySkillTravelingToSoulBlade;
+            //attackState = AttackStates.PrimarySkillTravelingToSoulBlade;
         }
     }
 

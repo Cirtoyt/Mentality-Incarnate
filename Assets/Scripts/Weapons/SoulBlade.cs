@@ -4,18 +4,18 @@ using UnityEngine;
 
 public class SoulBlade : Weapon
 {
-    private void Awake()
+    private Player player;
+
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        
+        if (collision.TryGetComponent(out DoubtEnemyAI enemy))
+        {
+            enemy.DealDamage(player.GetWillPower());
+        }
     }
 
-    void Start()
+    public void SetPlayer(Player player)
     {
-        
-    }
-
-    void Update()
-    {
-        
+        this.player = player;
     }
 }
